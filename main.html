@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>PayCheck Calculator</title>
+</head>
+<body>
+    <h1>Paycheck Calculator</h1>
+    <div class="container">
+        <form  action=""></form>
+            <div class="form-group">
+                <label class="labeltext"  for="bonusRate">Your Bonus Rate per Hour</label>
+                <input class="form-control" type="number" name="bonusRatePerHour" value="15.75" id="bonusRate" placeholder="Your Bonus rate">
+            </div>
+            <div class="form-group">
+                <label class="labeltext" for="flaggedHours">Amount of Hours Flagged</label>
+                <input class="form-control" type="number" name="flaggedHours" id="flaggedHours" placeholder="Hours you flagged">
+            </div>
+            <div class="form-group">
+                <label class="labeltext" for="hoursAtWork">How many Hours were you clocked in for</label>
+                <input class="form-control" type="number" name="hoursAtWork" id="hoursAtWork" placeholder="Clocked in Hours">
+            </div>
+            <div class="form-group">
+                <label class="labeltext" for="overtime">Amount of Overtime Hours</label>
+                <input class="form-control" type="number" name="overtime" id="overtime" placeholder="OverTime Hours">
+            </div>
+       
+            <button class="btn btn-danger" id="reset">Reset</button>
+            <button class="btn btn-primary" id="calculate">Calculate</button>
+        </form>   
+    </div>
+    <div class="container">
+    <h2>Your Total Pay</h2>
+    <p id="display">$0.</p>
+    </div>
+    <div class="container">
+        <div class="form-group">
+            <label class="labeltext"  for="401k">Percentage Contribution to 401k</label>
+            <input class="form-control" type="number" name="savings" value="4" id="savings" placeholder="401k percentage">
+        </div>
+    </div>
+    <div class="container">
+        <h2>Your Total 401k Contribution</h2>
+        <p id="amount401k">$0.</p>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
