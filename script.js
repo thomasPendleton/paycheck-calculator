@@ -6,32 +6,57 @@ const display = document.querySelector("#display");
 const overtime = document.querySelector("#overtime");
 const reset = document.querySelector("#reset");
 const saving = document.querySelector("#savings");
-const display401= document.querySelector("#amount401k");
+const display401 = document.querySelector("#amount401k");
+const takeHome = document.querySelector("#takehome");
 
-calculate.addEventListener("click", () =>{
-    let numFlaggedHours = Number(flaggedHours.value);
-    let numBonusRate = Number(bonusRate.value);
-    let numHoursWorked = Number(hoursWorked.value);
-    let numOvertime = Number(overtime.value);
-    let numSaving = Number(saving.value);
-    
-    let overTimePay = numOvertime * (numBonusRate + 24)
-    let bonusPay = numBonusRate*numFlaggedHours;
-    let basePay = numHoursWorked * 24;
-    let totalPay = Math.round( bonusPay + basePay + overTimePay);
-    let savingsTotal = Math.round(totalPay * (numSaving / 100));
-    console.log(totalPay);
-    
-    display.innerHTML =`$${totalPay}.`;
-    display401.innerHTML = `$${savingsTotal}.`;
+let clicked = () => {
+  let numBonusRate = Number(bonusRate.value);
+  let flagged = flaggedHours.value;
+  let punched = hoursWorked.value;
+  let numOvertime = overtime.value;
+  let overTimePay = numOvertime * (numBonusRate + 26);
+  let totalPay = Math.round(comp(flagged, punched, numBonusRate, overTimePay));
+  let numSaving = Number(saving.value);
+  let savingsTotal = Math.round(totalPay * (numSaving / 100));
+  let taxed = totalPay * 0.26;
+  let calcTakeHome = totalPay - taxed;
+
+  display.innerHTML = `$${totalPay}.`;
+  takeHome.innerHTML = `$${Math.round(
+    calcTakeHome
+  )}. Est. after taxes and insurance`;
+  display401.innerHTML = `$${savingsTotal}.`;
+};
+
+let comp = (val1, val2, bonus, ot) => {
+  if (val1 >= val2) {
+    return val1 * (26 + bonus) + ot;
+  } else {
+    return val1 * bonus + val2 * 26 + ot;
+  }
+};
+
+const clearBoard = () => {
+  display.innerHTML = "$0.";
+  flaggedHours.value = "";
+  hoursWorked.value = "";
+  overtime.value = "";
+  display401.innerHTML = "$0.";
+  takeHome.innerHTML = "$0.";
+};
+
+calculate.addEventListener("click", () => {
+  clicked();
+});
+
+window.addEventListener("keyup", (event) => {
+  if (event.keyCode === 13) {
+    clicked();
+  } else if (event.keyCode === 82) {
+    clearBoard();
+  }
 });
 
 reset.addEventListener("click", () => {
-    display.innerHTML = "$0.";
-    bonusRate.value = "";
-    flaggedHours.value = "";
-    hoursWorked.value = "";
-    overtime.value = "";
-    display401.innerHTML = "$0."
-})
-
+  clearBoard();
+});

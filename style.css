@@ -20,7 +20,7 @@ button{
 #reset{
     width: 85px;
 }
-#display{
+#display, #takehome{
     text-emphasis: bold;
     font-weight: 800;
 }
