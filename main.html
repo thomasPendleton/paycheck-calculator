@@ -15,7 +15,7 @@
         <form  action=""></form>
             <div class="form-group">
                 <label class="labeltext"  for="bonusRate">Your Bonus Rate per Hour</label>
-                <input class="form-control" type="number" name="bonusRatePerHour" value="15.75" id="bonusRate" placeholder="Your Bonus rate">
+                <input class="form-control" type="number" name="bonusRatePerHour" value="15.55" id="bonusRate" placeholder="Your Bonus rate">
             </div>
             <div class="form-group">
                 <label class="labeltext" for="flaggedHours">Amount of Hours Flagged</label>
@@ -29,14 +29,16 @@
                 <label class="labeltext" for="overtime">Amount of Overtime Hours</label>
                 <input class="form-control" type="number" name="overtime" id="overtime" placeholder="OverTime Hours">
             </div>
-       
-            <button class="btn btn-danger" id="reset">Reset</button>
+
             <button class="btn btn-primary" id="calculate">Calculate</button>
+            <button class="btn btn-danger" id="reset">Reset</button>
+            
         </form>   
     </div>
     <div class="container">
     <h2>Your Total Pay</h2>
     <p id="display">$0.</p>
+    <p id="takehome">$0. </p>
     </div>
     <div class="container">
         <div class="form-group">
@@ -47,8 +49,12 @@
     <div class="container">
         <h2>Your Total 401k Contribution</h2>
         <p id="amount401k">$0.</p>
+         <p>You need to set more aside for your 401k!</p>
     </div>
-    <p>You need to set more aside for your 401k!</p>
+   
+
+
+
     <script src="script.js"></script>
-</body>
+    </body>
 </html>
