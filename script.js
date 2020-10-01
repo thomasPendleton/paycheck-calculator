@@ -10,13 +10,15 @@ const display401 = document.querySelector("#amount401k");
 const takeHome = document.querySelector("#takehome");
 
 let clicked = () => {
-  let numBonusRate = Number(bonusRate.value);
+  let numBonusRate = +bonusRate.value;
   let flagged = flaggedHours.value;
   let punched = hoursWorked.value;
   let numOvertime = overtime.value;
   let overTimePay = numOvertime * (numBonusRate + 26);
-  let totalPay = Math.round(comp(flagged, punched, numBonusRate, overTimePay));
-  let numSaving = Number(saving.value);
+  let totalPay = Math.round(
+    comp(+flagged, +punched, numBonusRate, overTimePay)
+  );
+  let numSaving = +saving.value;
   let savingsTotal = Math.round(totalPay * (numSaving / 100));
   let taxed = totalPay * 0.26;
   let calcTakeHome = totalPay - taxed;
@@ -29,9 +31,12 @@ let clicked = () => {
 };
 
 let comp = (val1, val2, bonus, ot) => {
+  console.log(val1, val2, bonus, ot);
   if (val1 >= val2) {
+    console.log("if");
     return val1 * (26 + bonus) + ot;
   } else {
+    console.log("else");
     return val1 * bonus + val2 * 26 + ot;
   }
 };
